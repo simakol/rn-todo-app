@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, ScrollView } from "react-native";
+import { StyleSheet, Text, View, ScrollView, FlatList } from "react-native";
 import { Navbar } from "./src/components/Navbar";
 import { AddTodo } from "./src/components/AddTodo";
 import { Todo } from "./src/components/Todo";
 
 export default function App() {
-  const [todos, setTodos] = useState([
-    {
+  const [todos, setTodos] = useState([]);
+  /* {
       id: 1,
       title: "test",
     },
@@ -57,8 +57,7 @@ export default function App() {
     {
       id: 13,
       title: "test",
-    },
-  ]);
+    }, */
 
   const addTodo = (title) => {
     setTodos((prevTodos) => [
@@ -68,21 +67,25 @@ export default function App() {
         title,
       },
     ]);
-    return;
   };
 
+  const removeTodo = (id) => {
+    setTodos((prevTodos) => prevTodos.filter((el) => el.id !== id));
+  };
   return (
-    <ScrollView>
+    <View>
       <Navbar title="Todo App" />
       <View style={styles.container}>
         <AddTodo onSubmit={addTodo} />
-        <View>
-          {todos.map((todo) => (
-            <Todo todo={todo} key={todo.id} />
-          ))}
-        </View>
+
+        <FlatList
+          style={styles.todosList}
+          data={todos}
+          renderItem={({ item }) => <Todo todo={item} onRemove={removeTodo} />}
+          keyExtractor={(item) => item.id.toString()}
+        />
       </View>
-    </ScrollView>
+    </View>
   );
 }
 
@@ -90,5 +93,8 @@ const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 30,
     paddingVertical: 30,
+  },
+  todosList: {
+    paddingBottom: 50,
   },
 });
