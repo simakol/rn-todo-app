@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, View, Text, Button, Alert } from "react-native";
+import { AppCard } from "../ui/AppCard";
 import { BUTTON_THEME } from "../theme";
 
 export const TodoScreen = ({ todo, backToMainScreen, removeTodo }) => {
@@ -9,7 +10,10 @@ export const TodoScreen = ({ todo, backToMainScreen, removeTodo }) => {
   };
   return (
     <View>
-      <Text style={styles.text}>{todo.title}</Text>
+      <AppCard style={styles.card}>
+        <Text style={styles.text}>{todo.title}</Text>
+        <Button title="Edit" />
+      </AppCard>
       <View style={styles.buttonsBlock}>
         <View style={styles.button}>
           <Button title="Back" onPress={backToMainScreen} />
@@ -45,7 +49,6 @@ export const TodoScreen = ({ todo, backToMainScreen, removeTodo }) => {
 };
 const styles = StyleSheet.create({
   text: {
-    marginBottom: 50,
     fontSize: 20,
   },
   buttonsBlock: {
@@ -57,5 +60,8 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: BUTTON_THEME.BUTTONS_BORDER_COLOR,
     borderRadius: 5,
+  },
+  card: {
+    marginBottom: 25,
   },
 });
