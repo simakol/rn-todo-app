@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, View, Text, Button, Alert } from "react-native";
+import { BUTTON_THEME } from "../theme";
 
 export const TodoScreen = ({ todo, backToMainScreen, removeTodo }) => {
   const deleteTodo = (todo) => {
@@ -16,7 +17,7 @@ export const TodoScreen = ({ todo, backToMainScreen, removeTodo }) => {
         <View style={styles.button}>
           <Button
             title="Delete"
-            color="#e53935"
+            color={BUTTON_THEME.DNAGER_COLOR}
             onPress={() => {
               Alert.alert(
                 "Are you sure?",
@@ -54,7 +55,7 @@ const styles = StyleSheet.create({
   button: {
     width: "40%",
     borderWidth: 2,
-    borderColor: "#000",
+    borderColor: BUTTON_THEME.BUTTONS_BORDER_COLOR,
     borderRadius: 5,
   },
 });

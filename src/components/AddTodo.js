@@ -7,6 +7,7 @@ import {
   Alert,
   Keyboard,
 } from "react-native";
+import { BUTTON_THEME } from "../theme";
 
 export const AddTodo = ({ onSubmit }) => {
   const [value, setValue] = useState("");
@@ -54,8 +55,8 @@ const styles = StyleSheet.create({
   },
   addBtn: {
     borderWidth: 2,
-    borderColor: "#000",
+    borderColor: BUTTON_THEME.BUTTONS_BORDER_COLOR,
     borderRadius: 5,
-    width: '25%'
+    width: "25%",
   },
 });

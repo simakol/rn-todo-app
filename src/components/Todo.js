@@ -1,5 +1,6 @@
 import React from "react";
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
+import { TASK_THEME } from "../theme";
 
 export const Todo = ({ todo, onRemove, goToTodo }) => {
   return (
@@ -20,7 +21,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 15,
     borderWidth: 1,
-    borderColor: "#eee",
+    borderColor: TASK_THEME.TASK_BORDER_COLOR,
     borderRadius: 5,
     marginBottom: 15,
   },
