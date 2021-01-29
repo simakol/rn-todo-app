@@ -31,7 +31,9 @@ export const AddTodo = ({ onSubmit }) => {
         autoCorrect={false}
         autoCapitalize="sentences"
       />
-      <Button title="Add" onPress={pressHandler} />
+      <View style={styles.addBtn}>
+        <Button title="Add" onPress={pressHandler} />
+      </View>
     </View>
   );
 };
@@ -49,5 +51,11 @@ const styles = StyleSheet.create({
     borderStyle: "solid",
     borderBottomWidth: 2,
     borderBottomColor: "#3948ab",
+  },
+  addBtn: {
+    borderWidth: 2,
+    borderColor: "#000",
+    borderRadius: 5,
+    width: '25%'
   },
 });
